@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}
+Students
+{% endblock title %}
+{% block content %}
+<h1 class="services_taital"><span style="color: #fcce2d">Our</span> Students</h1>
+
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">SN</th>
+      <th scope="col">Code</th>
+      <th scope="col">Full Name</th>
+      <th scope="col">Group</th>
+      <th scope="col">Sub Group</th>
+      <th scope="col">Doctor Name</th>
+    </tr>
+  </thead>
+  <tbody>
+     {% for student in all_students %}
+     <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <td>{{student.code}}</td>
+        <td>{{student.full_name}}</td>
+        <td>{{student.group}}</td>
+        <td>{{student.group_split}}</td>
+        <td>{{student.doctor.first_name}} {{student.doctor.last_name}}</td>
+      </tr>
+     {% endfor %}
+  </tbody>
+</table>
+{% endblock content %}

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %}
+Doctors
+{% endblock title %}
+{% block content %}
+<h1 class="services_taital"><span style="color: #fcce2d">Our</span> Doctors</h1>
+
+
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">SN</th>
+        <th scope="col">Code      </th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name </th>
+        <th scope="col">Certify   </th>
+        <th scope="col">Job Code  </th>
+        <th scope="col">Ssn       </th>
+        <th scope="col">Email     </th>
+        <th scope="col">Phone Num </th>
+        <th scope="col">Work Days </th>
+        <th scope="col">Notes     </th>
+        <th scope="col">Spcial    </th>
+        <th scope="col">Late Time </th>
+        <th scope="col">Rate      </th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for doc in all_doctors  %}
+       <tr>
+          <th scope="row">{{forloop.counter}}</th>
+          <td>{{doc.code      }}</td>
+          <td>{{doc.first_name}}</td>
+          <td>{{doc.last_name }}</td>
+          <td>{{doc.certify   }}</td>
+          <td>{{doc.job_code  }}</td>
+          <td>{{doc.ssn       }}</td>
+          <td>{{doc.email     }}</td>
+          <td>{{doc.phone_num }}</td>
+          <td>{{doc.work_days }}</td>
+          <td>{{doc.notes     }}</td>
+          <td>{{doc.spcial    }}</td>
+          <td>{{doc.late_time }}</td>
+          <td>{{doc.rate      }}</td>
+        </tr>
+       {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}

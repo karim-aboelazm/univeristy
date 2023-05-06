@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}
+Doctors And Students
+{% endblock title %}
+
+{% block content %}
+<h1 class="services_taital"><span style="color: #fcce2d">Our</span> Data</h1>
+<div class="accordion" id="accordionExample" style="outline: none;box-shadow: none;border:none;">
+   {% for doc in all_doctors  %}
+   <div class="accordion-item mt-5" >
+     <h2 class="accordion-header" id="heading{{doc.id}}">
+       <button class="accordion-button p-3 bg-dark text-white" style="border-radius: 25px;" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{doc.id}}" aria-expanded="true" aria-controls="collapse{{doc.id}}">
+         <h4 class="text-right  bg-dark text-white" style="width:100%; border-radius:25px;">{{doc.first_name}} {{doc.last_name}} <i class="fas fa-user-tie px-3"></i></h4>
+       </button>
+     </h2>
+     <div id="collapse{{doc.id}}" class="accordion-collapse collapse show" aria-labelledby="heading{{doc.id}}" data-bs-parent="#accordionExample">
+       <div class="accordion-body">
+         <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">SN</th>
+                <th scope="col">Code</th>
+                <th scope="col">Full Name</th>
+                <th scope="col">Group</th>
+                <th scope="col">Sub Group</th>
+              </tr>
+            </thead>
+            <tbody>
+               {% for student in doc.students_set.all %}
+               <tr>
+                  <th scope="row">{{forloop.counter}}</th>
+                  <td>{{student.code}}</td>
+                  <td>{{student.full_name}}</td>
+                  <td>{{student.group}}</td>
+                  <td>{{student.group_split}}</td>
+                </tr>
+               {% endfor %}
+            </tbody>
+        </table>
+       </div>
+     </div>
+   </div>
+   {% endfor %}
+ </div>
+
+
+
+{% endblock content %}
